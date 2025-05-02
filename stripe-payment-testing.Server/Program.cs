@@ -1,3 +1,5 @@
+using stripe_payment_testing.Server.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.Configure<StripeConfig>(builder.Configuration.GetSection("Stripe"));
 
 var app = builder.Build();
 
